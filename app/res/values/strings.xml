@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">笔迹批注</string>
+    <string name="acc_label">笔键助手</string>
+    <string name="acc_desc">监听联想手写笔按键，执行翻页/批注动作</string>
+</resources>
