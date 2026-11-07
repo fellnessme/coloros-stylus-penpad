@@ -85,7 +85,7 @@ docs/
 |---|---|---|
 | [Jetpack Ink](https://developer.android.com/jetpack/androidx/releases/ink) 1.0.0 | 笔迹渲染（原生 `libink.so`） | Apache-2.0 |
 | Kotlin stdlib 2.0.21 | Ink 的运行时 | Apache-2.0 |
-| [Shizuku API](https://github.com/RikkaApps/Shizuku-API) 13.1.5 | 借 shell 身份启动守护 | Apache-2.0 |
+| [Shizuku API](https://github.com/RikkaApps/Shizuku-API) 13.1.5 | 借 shell 身份启动守护（兼容官方 Shizuku 与 ShizukuX 等改包名分支） | Apache-2.0 |
 
 全部通过 `fetch-deps.ps1` 从 Google Maven / Maven Central 下载，仓库里**不含任何二进制依赖**。
 
@@ -139,8 +139,26 @@ adb shell setsid sh /data/local/tmp/penkeyd.sh
 
 Windows 上直接跑 `tools\PenKey_Monitor.bat`，它会每 20 秒检查一次，守护失效且屏幕亮着就自动补上。
 
-> 也可以接入 Shizuku 让 App 自己启动守护（`app/src/.../ShizukuShell.java`），
-> 这样重启后不再需要电脑 —— 前提是 Shizuku 本身能开机自启。
+### 笔键免电脑：接入 Shizuku
+
+上面那条命令依赖电脑。想彻底摆脱电脑，就用 **Shizuku** 给 App 一个 shell 身份：
+
+1. 安装 [Shizuku](https://github.com/RikkaApps/Shizuku)（或改包名分支，如 **ShizukuX**）
+2. 通过无线调试启动它，并在设置里打开「开机自启」
+3. 打开 PenPad，在 Shizuku 里授权本应用
+4. 之后 `DaemonKeeper` 会自己启动守护，每 5 分钟检查一次，进程死了自动重启
+
+```java
+// ShizukuShell.java 里的候选 authority，改包名分支也认
+"moe.shizuku.privileged.api.shizuku"   // 官方
+"xyz.shizuku.extra.api.shizuku"        // ShizukuX
+"af.shizuku.privileged.api.shizuku"    // 早期分支
+```
+
+Binder 键名同样做多候选匹配，所以只要分支保留协议就无需改代码。
+
+> 注意：Shizuku 本身在**未 root 的设备上重启后也会停**，
+> 靠的是它的「开机自启」（依赖无线调试）。如果那一步失效，仍需手动重开 Shizuku。
 
 ---
 
