@@ -1,0 +1,17 @@
+# 构建产物
+app/build/
+app/PenPad.apk
+app/debug.keystore
+
+# 第三方依赖（用 fetch-deps.ps1 下载）
+app/libs/*.jar
+app/libs/*.aar
+app/libs/*.so
+app/libs/arm64-v8a/
+
+# 系统垃圾
+*.log
+Thumbs.db
+desktop.ini
+*.idsig
+release/
