@@ -4,7 +4,8 @@
 
 > 本项目包含两部分：一个能用的**全屏批注 App**，和几份**踩坑文档**。
 > 如果你也在折腾「非原厂 ROM + 手写笔」，`docs/` 里的结论可能比代码更有用。
-
+> 本项目依赖酷安大佬@时空神的ColorOS17.0.104 for TB710fu基于ZUI_17.5.04.428底包原包OPPOpad5Proc17移植
+原帖https://www.coolapk.com/feed/74223090?s=NjEwMGNhYTYyN2Y4Mjg5ZzZhZWZlMzZkega1664 以及@gaoshan667的ColorOS17手写笔修复模块，原帖链接：https://www.coolapk.com/feed/74563523?s=NzkwNDc3MzAyN2Y4Mjg5ZzZhZWZlNGQwega1664 使用本项目前请确保以上均已安装调试
 ---
 
 ## 为什么会有这个项目
